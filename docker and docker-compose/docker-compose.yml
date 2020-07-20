@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  inventory-service:
+    build:
+      context: .
+      dockerfile: ./inventory-service/inventory.dev.dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./one-core:/app/one-core
+      - ./inventory-service:/app/inventory-service
+  user-service:
+    build:
+      context: .
+      dockerfile: ./user-service/user.dev.dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./one-core:/app/one-core
+      - ./user-service:/app/user-service

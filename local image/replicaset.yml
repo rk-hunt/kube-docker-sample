@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nodejs-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+        - image: sre_demo_api_service
+          ports:
+            - containerPort: 8001
+          name: sre-demo-api
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-service
+  labels:
+    app: nodejs-app
+spec:
+  selector:
+    app: nodejs-app
+  type: NodePort
+  ports:
+    - nodePort: 30002
+      port: 80
+      targetPort: 8001

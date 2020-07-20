@@ -1,0 +1,22 @@
+node_modules/
+node_modules_linux/
+
+one-core/node_modules/**/*
+one-core/node_modules/
+one-core/lib/**/*
+one-core/lib/
+
+# USE WHEN BUILD INVENTORY-SERVICE CONTAINER
+inventory-service/node_modules/**/*
+inventory-service/node_modules/
+user-service
+
+# USE WHEN BUILD USER-SERVICE CONTAINER
+# user-service/node_modules/**/*
+# user-service/node_modules/
+# inventory-service
+
+.editorconfig
+.eslintrc.js
+.prettierrc.js
+.gitignore
